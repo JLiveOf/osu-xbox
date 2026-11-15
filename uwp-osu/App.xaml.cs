@@ -12,6 +12,7 @@ sealed partial class App : Application
     /// <item><b>hybrid</b>: the console pointer stays on but is hidden. The pad moves the cursor itself (left stick, A = click).</item>
     /// <item><b>pad</b>: the console pointer is off, only the pad drives the cursor.</item>
     /// <item><b>system</b>: the console's own pointer (left stick + A) is used, shown on top of osu!'s cursor.</item>
+    /// <item><b>mouse</b>: experimental physical mouse, relative movement and hardware keyboard; no pad cursor.</item>
     /// </list>
     /// </summary>
     public static string PointerMode { get; private set; } = "hybrid";
@@ -28,7 +29,7 @@ sealed partial class App : Application
             {
                 string mode = System.IO.File.ReadAllText(path).Trim().ToLowerInvariant();
 
-                if (mode == "pad" || mode == "system" || mode == "hybrid")
+                if (mode == "pad" || mode == "system" || mode == "hybrid" || mode == "mouse")
                     PointerMode = mode;
             }
             else
@@ -39,8 +40,8 @@ sealed partial class App : Application
             // Keep the default.
         }
 
-        // Only "pad" switches the console's pointer off.
-        RequiresPointerMode = PointerMode == "pad" ? ApplicationRequiresPointerMode.WhenRequested : ApplicationRequiresPointerMode.Auto;
+        // Physical mouse mode also disables gamepad pointer emulation.
+        RequiresPointerMode = (PointerMode == "pad" || PointerMode == "mouse") ? ApplicationRequiresPointerMode.WhenRequested : ApplicationRequiresPointerMode.Auto;
     }
 
     protected override void OnLaunched(LaunchActivatedEventArgs e)

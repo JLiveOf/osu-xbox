@@ -4,6 +4,8 @@
 !/README.md
 !/LICENSE
 !/docs/
+!/tests/
+!/check-build.ps1
 !/uwp-osu/
 !/osu-aot/
 !/package-uwp.ps1

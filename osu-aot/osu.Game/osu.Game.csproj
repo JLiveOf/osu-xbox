@@ -3,6 +3,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <OutputType>Library</OutputType>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <XboxFrameworkProject Condition="'$(XboxFrameworkProject)' == ''">$(MSBuildThisFileDirectory)..\..\..\osu-xbox-port\osu-framework\osu.Framework\osu.Framework.csproj</XboxFrameworkProject>
   </PropertyGroup>
   <PropertyGroup Label="Nuget">
     <Title>osu!</Title>
@@ -39,7 +40,7 @@
     </PackageReference>
     <PackageReference Include="Realm" Version="20.1.0"/>
     <!-- Xbox port: the local framework fork instead of the NuGet package (build with -p:XboxPort=true). -->
-    <ProjectReference Include="..\..\..\osu-xbox-port\osu-framework\osu.Framework\osu.Framework.csproj" />
+    <ProjectReference Include="$(XboxFrameworkProject)" />
     <PackageReference Include="ppy.osu.Framework.SourceGeneration" Version="2025.1121.1" />
 
     <PackageReference Include="ppy.osu.Game.Resources" Version="2026.1021.0"/>

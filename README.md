@@ -1,3 +1,7 @@
+> **JLiveOf fork — experimental changes**
+>
+> Branch `xbox-external-input` adds experimental physical mouse input, keyboard/focus fixes and safer imports. See [external input status](docs/EXTERNAL-INPUT.md) and [changes](docs/JLIVEOF-CHANGES.md). The standalone input/import tests pass 17 checks. A new Xbox package has **not** been built: the matching modified osu!framework is absent from the public source and must be obtained first. The v0.1.0 binary belongs to the upstream author; it does not contain these changes.
+
  <div align="center">
 
 <img src="https://github.com/ppy/osu/blob/master/assets/lazer.png" width="100" alt="osu! logo">
